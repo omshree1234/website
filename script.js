@@ -6,10 +6,8 @@
 
 /* ─── INTEGRATIONS: SUPABASE & GOOGLE ANALYTICS ─────────── */
 const SUPABASE_CONFIG = {
-  // Enter client's Supabase Project URL (e.g., https://your-project.supabase.co)
-  url: '',
-  // Enter client's Supabase Anon/Public Key (starts with eyJhbGciOi...)
-  anonKey: '',
+  url: 'https://kfistbmxnwfochkfwana.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtmaXN0Ym14bndmb2Noa2Z3YW5hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5MDIwOTksImV4cCI6MjEwODQ3ODA5OX0.Xn87A8IcWshl-rCBnZ8wqG4w9mz4V4TUbAb18uL-7Fw',
   table: 'enquiries'
 };
 
