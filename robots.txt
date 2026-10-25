@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://mechanical-services-website.vercel.app/sitemap.xml
+Sitemap: https://omshree-industries-service.vercel.app/sitemap.xml

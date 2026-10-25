@@ -332,7 +332,7 @@ function initVisitingCard() {
   const getCardShareUrl = () => {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     if (isLocal) {
-      return 'https://mechanical-services-website.vercel.app/contact.html#digital-card';
+      return 'https://omshree-industries-service.vercel.app/contact.html#digital-card';
     }
     return window.location.href.split('#')[0] + '#digital-card';
   };
