@@ -1,0 +1,26 @@
+name: Keep Supabase Database Active
+
+on:
+  schedule:
+    # Runs every 3 days at 06:00 UTC (11:30 AM IST)
+    - cron: '0 6 */3 * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+
+jobs:
+  ping-supabase:
+    name: Ping Supabase API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase Database
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtmaXN0Ym14bndmb2Noa2Z3YW5hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5MDIwOTksImV4cCI6MjEwODQ3ODA5OX0.Xn87A8IcWshl-rCBnZ8wqG4w9mz4V4TUbAb18uL-7Fw" \
+            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtmaXN0Ym14bndmb2Noa2Z3YW5hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5MDIwOTksImV4cCI6MjEwODQ3ODA5OX0.Xn87A8IcWshl-rCBnZ8wqG4w9mz4V4TUbAb18uL-7Fw" \
+            "https://kfistbmxnwfochkfwana.supabase.co/rest/v1/enquiries?select=id&limit=1")
+          echo "Supabase response HTTP status: $STATUS"
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 400 ]; then
+            echo "✅ Supabase project pinged successfully. Database is active."
+          else
+            echo "⚠️ Unexpected status code: $STATUS"
+            exit 1
+          fi
